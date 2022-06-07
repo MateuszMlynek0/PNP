@@ -609,7 +609,7 @@ submitBtn.addEventListener("click", () => {
         } else {
             info.innerHTML = `You didn't check itsdasd`;
             info.innerText = `Błąd poprawna odpowiedź to ${quizData[currentQuiz].correct}`
-            score--
+            score--;
         }
 
 
