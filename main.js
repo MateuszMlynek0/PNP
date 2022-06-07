@@ -556,13 +556,6 @@ function GetRandQuestion() {
 };
 
 
-// function randQuestion() {
-//     let draw = Math.floor(Math.random() * quizData.length);
-//     console.log(draw)
-//     return draw;
-// }
-
-
 function loadQuiz() {
     // let currentQuiz = randQuestion();
     currentQuizData = quizData[currentQuiz];
@@ -607,10 +600,8 @@ submitBtn.addEventListener("click", () => {
 
     deselectAnswer();
     if (answer) {
-        console.log("11111111")
         console.log(quizData[currentQuiz].correct)
         if (answer == quizData[currentQuiz].correct) {
-            console.log("2222222")
             // console.log(`score: ${score}`);
             info.innerHTML = `Poprawna odpowiedź`;
             currentQuiz++
@@ -618,8 +609,7 @@ submitBtn.addEventListener("click", () => {
         } else {
             info.innerHTML = `You didn't check itsdasd`;
             info.innerText = `Błąd poprawna odpowiedź to ${quizData[currentQuiz].correct}`
-            console.log("3333333")
-
+            score--
         }
 
 
@@ -629,14 +619,8 @@ submitBtn.addEventListener("click", () => {
         console.log(`current quiz: ${currentQuiz}`)
         if (currentQuiz < quizData.length) {
             loadQuiz()
-            if (points == 0) {
-                points.innerHTML = `Zdobyłeś ${score} punktów`
-            } else if (points > 0) {
-                points.innerHTML = `Zdobyłeś ${score} punkty`
-            } else if (points > 9)
-                points.innerHTML = `Zdobyłeś ${score} punktów`
+            points.innerHTML = `Zdobyłeś ${score} punktów`
             // info.innerHTML = ``;
-            console.log(answer)
         }
         // else {
         // info.innerHTML = `You finished, your score is ${score}/${quizData.length}`
