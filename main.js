@@ -729,7 +729,7 @@ submitBtn.addEventListener("click", () => {
         if (answer == quizData[currentQuiz].correct) {
             // console.log(`score: ${score}`);
             info.innerHTML = `Poprawna odpowiedź`;
-            currentQuiz++
+            currentQuiz = GetRandQuestion();
             score++;
         } else {
             info.innerHTML = `You didn't check itsdasd`;
