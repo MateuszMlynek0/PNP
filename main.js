@@ -519,8 +519,133 @@ const quizData = [
         d: "fdiv",
         e: "fdivr st(1),st",
         correct: "c"
+    },
+    {
+        question: "W którym procesorze Intela pojawił się po raz pierwszy tryb chroniony?",
+        a: "8086",
+        b: "80286",
+        c: "80486DX",
+        d: "Pentium Pro",
+        e: "zadnego z powyższych",
+        correct: "b"
+    },
+    {
+        question: "Parametry aktualne przechowuje się w segmencie:",
+        a: "CS",
+        b: "DS",
+        c: "ES",
+        d: "SS",
+        e: "FS",
+        correct: ""
+    },
+    {
+        question: "Indeksowy tryb adresowania występuje w instrukcji:",
+        a: "inc  esi",
+        b: "mov  edi, offset zmienna",
+        c: "mov zmienna, rdx",
+        d: "or edx, [rbx]",
+        e: "mov [rax*8+tablica],rdx",
+        correct: "e"
+    },
+    {
+        question: "Która z instrukcji nie jest poprawna?",
+        a: "fmul",
+        b: "fadd st,st(1)",
+        c: "fstp st(1)",
+        d: "fbld st(1)",
+        e: "fsubr st(1),st",
+        correct: "d"
+    },
+    {
+        question: "Która z instrukcji nie zmienia flagi P?",
+        a: "dec",
+        b: "cmp",
+        c: "paddd",
+        d: "xadd",
+        e: "fcomi",
+        correct: "c"
+    },
+    {
+        question: "Która z instrukcji neguje flagę CF?",
+        a: "cmc",
+        b: "stc",
+        c: "cld",
+        d: "std",
+        e: "clc",
+        correct: "a"
+    },
+    {
+        question: "Która z instrukcji umożliwia wpisanie wartości do dwu rejestrów?",
+        a: "rlc",
+        b: "lds",
+        c: "add",
+        d: "movbe",
+        e: "żadna z powyższych",
+        correct: "b"
+    },
+    {
+        question: "Która z instrukcji pozwala na wypełnienie tekstu znakiem?",
+        a: "scasb",
+        b: "movsd",
+        c: "lodsd",
+        d: "cmpsb",
+        e: "stosb",
+        correct: "a"
+    },
+    {
+        question: "Prefix LOCK nie odnosi się do instrukcji:",
+        a: "lea",
+        b: "btr",
+        c: "xchg",
+        d: "cmpxch8b",
+        e: "neg",
+        correct: "a"
+    },
+    {
+        question: "Instrukcje SSE Intel wprowadził po raz pierwszy w procesorze:",
+        a: "Ivy Bridge",
+        b: "Sandy Bridge",
+        c: "Core2Duo",
+        d: "Pentium III",
+        e: "Pentium MMX",
+        correct: "d"
+    },
+    {
+        question: "Ile rejestrów YMM używają w trybie x86 procesory Intel?",
+        a: "8",
+        b: "16",
+        c: "32",
+        d: "64",
+        e: "nie ma takich rejestrów",
+        correct: "e"
+    },
+    {
+        question: "Która instrukcja dla liczb ze znakiem zmienia słowo na podwójne słowo?",
+        a: "movzx",
+        b: "cbw",
+        c: "cwde",
+        d: "xlatb",
+        e: "bswap",
+        correct: "a"
+    },
+    {
+        question: "Która z instrukcji dla liczb bez znaku przesyła dla warunku większości?",
+        a: "cmpbe",
+        b: "movb",
+        c: "movac",
+        d: "cmovnge",
+        e: "cmovnbe",
+        correct: "e"
+    },
+    {
+        question: "Do zmiany kolejności słów w rejestrze MMX służy instrukcja",
+        a: "cmovnge",
+        b: "pmovmsb",
+        c: "psadbw",
+        d: "pshufw",
+        e: "ldmxcsr",
+        correct: "d"
     }
-
 ]
 
 const questionEl = document.querySelector('.quiz-questions__title');
@@ -536,6 +661,7 @@ const info = document.querySelector('.info')
 const reload = document.querySelector('.reload');
 const questionCounter = document.querySelector('.question-counter')
 const points = document.querySelector('.points');
+const number = document.querySelector('.number');
 let currentQuiz = GetRandQuestion();
 let score = 0;
 
@@ -547,7 +673,6 @@ reload.addEventListener('click', () => {
     // currentQuiz = GetRandQuestion();
     deselectAnswer()
     data();
-    info.innerHTML = `asdasd`;
 })
 
 
@@ -609,7 +734,7 @@ submitBtn.addEventListener("click", () => {
         } else {
             info.innerHTML = `You didn't check itsdasd`;
             info.innerText = `Błąd poprawna odpowiedź to ${quizData[currentQuiz].correct}`
-            score--
+            score = 0
         }
 
 
@@ -620,6 +745,7 @@ submitBtn.addEventListener("click", () => {
         if (currentQuiz < quizData.length) {
             loadQuiz()
             points.innerHTML = `Zdobyłeś ${score} punktów`
+
             // info.innerHTML = ``;
         }
         // else {
