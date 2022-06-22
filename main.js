@@ -536,7 +536,7 @@ const quizData = [
         c: "ES",
         d: "SS",
         e: "FS",
-        correct: ""
+        correct: "d"
     },
     {
         question: "Indeksowy tryb adresowania występuje w instrukcji:",
